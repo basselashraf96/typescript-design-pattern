@@ -2,10 +2,21 @@
 
 Abstraction in TypeScript is the process of hiding the implementation details of a class and exposing only the essential features. It allows developers to focus on what an object does rather than how it does it. This is typically achieved using abstract classes or interfaces.
 
-## Learn More About Abstraction  
+## Learn More About Abstraction
+
 For a deeper understanding of **abstraction in TypeScript**, check out this article:  
 🔗 [Abstraction Example in Object-Oriented TypeScript](https://cloudaffle.com/series/object-oriented-typescript/abstraction-in-typescript/)
 🔗 [Abstraction Advantages](https://cloudaffle.com/series/object-oriented-typescript/abstraction-example/#why-use-abstraction-)
+
+## 🔹 **Analogy: A Car's Steering Wheel 🚗**
+
+When driving a car, you **turn the steering wheel to change direction**.
+
+- You don’t need to understand **how the engine, wheels, and transmission work together**—that complexity is abstracted away.
+- The car provides a **simple, high-level interface (steering wheel)** to interact with complex internal mechanisms.
+- Similarly, **abstraction in programming** allows developers to use **high-level APIs** without dealing with low-level implementation details.
+
+---
 
 # TypeORM: Abstraction in Database Management 🚀
 

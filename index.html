@@ -4,17 +4,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typescript design patters</title>
-    <script type="module" src="./src/abstraction/shapes.ts"></script>
-    <script type="module" src="./src/abstraction/dates.ts"></script>
-    <script type="module" src="./src/encapsulation/bankAccount.ts"></script>
-    <script type="module" src="./src/polymorphism/shapes.ts"></script>
-    <script type="module" src="./src/inheritance/animal.ts"></script>
-    <script type="module" src="./src/inheritance/product.ts"></script>
+    <title>TypeScript Design Patterns Course</title>
+    <!-- <script type="module" src="./src/oop/abstraction/shapes.ts"></script> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0E0E0E;
+            color: white;
+            text-align: center;
+        }
+
+        .hero {
+            background: linear-gradient(to right, #1A1A1A, #0E0E0E);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #00AEEF;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            max-width: 600px;
+        }
+
+        .cta {
+            background: #00AEEF;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .cta:hover {
+            background: #0088CC;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #1A1A1A;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            max-width: 560px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <div id="app">asdasd</div>
+    <div class="hero">
+        <h1>Master TypeScript Design Patterns</h1>
+        <p>Unlock the power of Object-Oriented Programming with TypeScript. Learn design patterns used by top
+            developers.</p>
+
+        <button id="videoBtn" class="cta">Don't Click Me!</button>
+    </div>
+
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe id="videoFrame" width="560" height="315" src="about:blank" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('videoModal');
+        const videoBtn = document.getElementById('videoBtn');
+        const closeBtn = document.querySelector('.close');
+        const videoFrame = document.getElementById('videoFrame');
+        const videoUrl = "https://www.youtube.com/embed/ujr8N-vFaYg?autoplay=1";
+
+
+        videoBtn.addEventListener('click', function () {
+            videoFrame.src = videoUrl;
+            modal.style.display = "flex";
+        });
+
+        closeBtn.addEventListener('click', function () {
+            modal.style.display = "none";
+            videoFrame.src = "about:blank";
+        });
+
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+                videoFrame.src = "about:blank";
+            }
+        });
+    </script>
 </body>
 
 </html>
