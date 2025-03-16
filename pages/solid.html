@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLID Principles in TypeScript</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+
+    <!-- 🔹 Header Navigation -->
+    <header class="header">
+        <h1 class="logo">SOLID Principles</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="../index.html">🏠 Home</a></li>
+                <li><a href="oop.html">🎭 OOP Principles</a></li>
+                <li><a href="solid.html" aria-current="page">🛠️ SOLID Principles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h2>🛠️ SOLID Principles in TypeScript</h2>
+        <p>The SOLID principles help developers build scalable, maintainable, and flexible software using **Object-Oriented Design**.</p>
+
+        <section class="accordion">
+            <!-- 1️⃣ Single Responsibility Principle (SRP) -->
+            <article class="accordion-item">
+                <button class="accordion-header" aria-expanded="false" aria-controls="srp-content">📌 Single Responsibility Principle (SRP)</button>
+                <div id="srp-content" class="accordion-content" hidden>
+                    <p>SRP states that **a class should have only one reason to change**.</p>
+                    <p><strong>Analogy:</strong> A restaurant has separate staff for cooking, serving, and cleaning. Each has a single responsibility.</p>
+                    <pre><code>
+class BlogPost {
+    constructor(public title: string, public content: string) {}
+
+    savePost(): void {
+        console.log("Post saved to database");
+    }
+}
+
+// ❌ Wrong: Mixing responsibilities (saving + displaying)
+class BlogPostDisplay {
+    constructor(private post: BlogPost) {}
+
+    display(): string {
+        return `<h1>${this.post.title}</h1><p>${this.post.content}</p>`;
+    }
+}
+                    </code></pre>
+                </div>
+            </article>
+
+            <!-- 2️⃣ Open/Closed Principle (OCP) -->
+            <article class="accordion-item">
+                <button class="accordion-header" aria-expanded="false" aria-controls="ocp-content">🔄 Open/Closed Principle (OCP)</button>
+                <div id="ocp-content" class="accordion-content" hidden>
+                    <p>OCP states that **a class should be open for extension but closed for modification**.</p>
+                    <p><strong>Analogy:</strong> You can install new apps on your phone **without modifying the OS**.</p>
+                    <pre><code>
+interface DiscountStrategy {
+    getDiscount(): number;
+}
+
+class RegularDiscount implements DiscountStrategy {
+    getDiscount(): number {
+        return 10;
+    }
+}
+
+class PremiumDiscount implements DiscountStrategy {
+    getDiscount(): number {
+        return 20;
+    }
+}
+                    </code></pre>
+                </div>
+            </article>
+
+            <!-- 3️⃣ Liskov Substitution Principle (LSP) -->
+            <article class="accordion-item">
+                <button class="accordion-header" aria-expanded="false" aria-controls="lsp-content">🔄 Liskov Substitution Principle (LSP)</button>
+                <div id="lsp-content" class="accordion-content" hidden>
+                    <p>LSP states that **a subclass should be substitutable for its base class** without breaking the system.</p>
+                    <p><strong>Analogy:</strong> A universal remote should work for all TV brands, without modifying its core design.</p>
+                    <pre><code>
+class Bird {
+    fly(): void {
+        console.log("Flying...");
+    }
+}
+
+class Penguin extends Bird {
+    // ❌ Wrong: Penguins can't fly, breaking LSP
+    fly(): void {
+        throw new Error("Penguins can't fly!");
+    }
+}
+                    </code></pre>
+                </div>
+            </article>
+
+            <!-- 4️⃣ Interface Segregation Principle (ISP) -->
+            <article class="accordion-item">
+                <button class="accordion-header" aria-expanded="false" aria-controls="isp-content">📑 Interface Segregation Principle (ISP)</button>
+                <div id="isp-content" class="accordion-content" hidden>
+                    <p>ISP states that **a class should not be forced to implement interfaces it does not use**.</p>
+                    <p><strong>Analogy:</strong> A coffee machine should not require a function for making tea if it only makes coffee.</p>
+                    <pre><code>
+interface Printer {
+    print(): void;
+}
+
+interface Scanner {
+    scan(): void;
+}
+
+class MultiFunctionPrinter implements Printer, Scanner {
+    print(): void {
+        console.log("Printing...");
+    }
+    
+    scan(): void {
+        console.log("Scanning...");
+    }
+}
+
+// ✅ Good: Separate interfaces for separate concerns.
+                    </code></pre>
+                </div>
+            </article>
+
+            <!-- 5️⃣ Dependency Inversion Principle (DIP) -->
+            <article class="accordion-item">
+                <button class="accordion-header" aria-expanded="false" aria-controls="dip-content">🔌 Dependency Inversion Principle (DIP)</button>
+                <div id="dip-content" class="accordion-content" hidden>
+                    <p>DIP states that **high-level modules should not depend on low-level modules. Instead, both should depend on abstractions.**</p>
+                    <p><strong>Analogy:</strong> A TV should work with any brand of remote control, not just a specific one.</p>
+                    <pre><code>
+interface PaymentProcessor {
+    processPayment(amount: number): void;
+}
+
+class CreditCardProcessor implements PaymentProcessor {
+    processPayment(amount: number): void {
+        console.log(`Processing Credit Card Payment of $${amount}`);
+    }
+}
+
+// ✅ Good: High-level module depends on an abstraction, not a concrete class.
+class Checkout {
+    constructor(private paymentProcessor: PaymentProcessor) {}
+
+    completePurchase(amount: number): void {
+        this.paymentProcessor.processPayment(amount);
+    }
+}
+                    </code></pre>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
